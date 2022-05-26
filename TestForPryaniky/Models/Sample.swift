@@ -8,19 +8,19 @@
 import Foundation
 
 // MARK: - Sample
-struct Sample {
+struct Sample: Decodable {
     let data: [Datum]
     let view: [String]
 }
 
 // MARK: - Datum
-struct Datum {
+struct Datum: Decodable {
     let name: String
     let data: DataClass
 }
 
 // MARK: - DataClass
-struct DataClass {
+struct DataClass: Decodable {
     let text: String?
     let url: String?
     let selectedID: Int?
@@ -28,7 +28,7 @@ struct DataClass {
 }
 
 // MARK: - Variant
-struct Variant {
+struct Variant: Decodable {
     let id: Int
     let text: String
 }
