@@ -35,7 +35,27 @@ class MainViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
             tableView.deselectRow(at: indexPath, animated: true)
+        showAlert(title: "Объект", message: viewModel.getMessage(at: indexPath))
         }
 }
 
+extension MainViewController {
+    private func showAlert(
+        title: String,
+        message: String
+    ) {
+        let alert = UIAlertController(
+            title: title,
+            message: message,
+            preferredStyle: .alert
+        )
+        let okAction = UIAlertAction(
+            title: "OK",
+            style: .default
+        )
+        
+        alert.addAction(okAction)
+        present(alert, animated: true)
+    }
+}
 

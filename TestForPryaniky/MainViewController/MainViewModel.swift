@@ -13,6 +13,7 @@ protocol MainViewModelProtocol: AnyObject {
     func fetchData(completion: @escaping() -> Void)
     func numberOfRows() -> Int
     func cellViewModel(at indexPath: IndexPath) -> TableCellViewModelProtocol
+    func getMessage(at indexPath: IndexPath) -> String
 }
 
 class MainViewModel: MainViewModelProtocol {
@@ -32,6 +33,22 @@ class MainViewModel: MainViewModelProtocol {
     func cellViewModel(at indexPath: IndexPath) -> TableCellViewModelProtocol {
         let view = sample?.view[indexPath.row] ?? ""
         return TableCellViewModel(view: view, data: sample?.data)
+    }
+    
+    func getMessage(at indexPath: IndexPath) -> String {
+        let view = sample?.view[indexPath.row] ?? ""
+        let datum = getSampleClass(for: view)
+        return datum?.name ?? ""
+    }
+    
+    private func getSampleClass(for view: String) -> Datum? {
+        guard let getingClasses = sample?.data else { return nil }
+        for searchedСlass in getingClasses {
+            if searchedСlass.name == view {
+                return searchedСlass
+            }
+        }
+        return nil
     }
 }
 
