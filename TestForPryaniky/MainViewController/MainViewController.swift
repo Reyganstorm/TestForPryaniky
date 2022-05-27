@@ -11,40 +11,33 @@ class MainViewController: UITableViewController {
 
     private var sample: Sample?
     
+    private var viewModel: MainViewModelProtocol! {
+        didSet {
+            viewModel.fetchData {
+                self.tableView.reloadData()
+            }
+        }
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        fetchData()
+        viewModel = MainViewModel()
     }
 
     // MARK: - Table view data source
-
-    override func numberOfSections(in tableView: UITableView) -> Int {
-        2
-    }
-    
-    override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        section == 0 ? "Data" : "Views"
-     }
-
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        section == 0 ? sample?.data.count ?? 0 : sample?.view.count ?? 0
+        viewModel.numberOfRows()
     }
 
-    
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "customCell", for: indexPath)
-
-
+        let cell = tableView.dequeueReusableCell(withIdentifier: "customCell", for: indexPath) as! TableViewCell
+        cell.viewModel = viewModel.cellViewModel(at: indexPath)
         return cell
     }
     
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+            tableView.deselectRow(at: indexPath, animated: true)
+        }
 }
 
-extension MainViewController {
-    private func fetchData() {
-        NetworkManager.shared.fetch(from: Links.dataURL.rawValue) { data in
-            self.sample = data
-            self.tableView.reloadData()
-        }
-    }
-}
+

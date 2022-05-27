@@ -17,11 +17,10 @@ class NetworkManager {
     private init() {}
     
     func fetch(from url: String, and complition: @escaping(Sample) -> Void) {
-        guard let url = URL(string: url) else { return print(4)}
+        guard let url = URL(string: url) else { return }
         
         URLSession.shared.dataTask(with: url) { data, _, error in
             guard let data = data else {
-                print(3)
                 print(error.debugDescription)
                 return
             }
@@ -30,13 +29,27 @@ class NetworkManager {
                 let sample = try JSONDecoder().decode(Sample.self, from: data)
                 
                 DispatchQueue.main.async {
-                    print(1)
                     complition(sample)
                 }
             } catch let error {
-                print(2)
                 print(error)
             }
         }.resume()
+    }
+    
+    func fetchImage(from url: String?,
+                    with completion: @escaping(Data) -> Void) {
+        guard let url = URL(string: url ?? "" ) else { return }
+        
+        URLSession.shared.dataTask(with: url) { data, _, error in
+            guard let data = data else {
+                print(error?.localizedDescription ?? "no description of error")
+                return
+            }
+            
+            DispatchQueue.main.async {
+                completion(data)
+            }
+        } .resume()
     }
 }
