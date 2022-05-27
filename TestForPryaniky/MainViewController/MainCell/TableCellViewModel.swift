@@ -24,7 +24,8 @@ protocol TableCellViewModelProtocol: AnyObject {
     func getMassivVariants() -> [String]
     func getSegmentVarient() -> SegmentedVarients
     func getMessageFromVariantsID(at index: Int) -> String
-    
+    var segmentadText: Box<String> { get }
+    func segmentDidChange(segment: Int)
 }
 
 class TableCellViewModel: TableCellViewModelProtocol {
@@ -80,7 +81,12 @@ class TableCellViewModel: TableCellViewModelProtocol {
     func getMessageFromVariantsID(at index: Int) -> String {
         let variants = getSampleClass(for: "selector")
         let massivVariants = variants?.data.variants
-        //let index = getSegmentVarient()
         return massivVariants?[index].text ?? ""
+    }
+    
+    var segmentadText: Box<String> = Box("\(getMessageFromVariantsID(at: selectedBind.rawValue))")
+    
+    func segmentDidChange(segment: Int) {
+        segmentadText.value = getMessageFromVariantsID(at: selectedBind.rawValue)
     }
 }
