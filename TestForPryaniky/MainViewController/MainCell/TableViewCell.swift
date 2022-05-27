@@ -8,13 +8,14 @@
 import UIKit
 
 class TableViewCell: UITableViewCell {
+    
     var viewModel: TableCellViewModelProtocol! {
         didSet {
             if viewModel.view == "selector" {
-                textLabel?.text = "Выбери и нажми"
+                textLabel?.text = viewModel.getMessageFromVariantsID(at: viewModel.selectedBind.rawValue)
                 
                 let customSC = UISegmentedControl(items: viewModel.getMassivVariants())
-                customSC.selectedSegmentIndex = viewModel.getSegmentVarient().rawValue - 1
+                customSC.selectedSegmentIndex = viewModel.getSegmentVarient().rawValue 
                 customSC.layer.cornerRadius = 5.0
                 customSC.backgroundColor = .lightGray
                 customSC.tintColor = .white
@@ -31,8 +32,7 @@ class TableViewCell: UITableViewCell {
             }
         }
     }
+    @objc func changeVariant(_ sender: UISegmentedControl) {
+    }
 }
 
-extension TableViewCell {
-    @objc func changeVariant() {}
-}

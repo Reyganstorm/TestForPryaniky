@@ -19,6 +19,7 @@
 		E8D207CD2840F68C002A478F /* TableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8D207CC2840F68C002A478F /* TableViewCell.swift */; };
 		E8D207D12840F74E002A478F /* TableCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8D207D02840F74E002A478F /* TableCellViewModel.swift */; };
 		E8D207D32840FFE7002A478F /* ImageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8D207D22840FFE7002A478F /* ImageManager.swift */; };
+		E8D207DB28411D6A002A478F /* BoxForSegmentedControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8D207DA28411D6A002A478F /* BoxForSegmentedControl.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -36,6 +37,7 @@
 		E8D207CC2840F68C002A478F /* TableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewCell.swift; sourceTree = "<group>"; };
 		E8D207D02840F74E002A478F /* TableCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableCellViewModel.swift; sourceTree = "<group>"; };
 		E8D207D22840FFE7002A478F /* ImageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageManager.swift; sourceTree = "<group>"; };
+		E8D207DA28411D6A002A478F /* BoxForSegmentedControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoxForSegmentedControl.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -68,7 +70,6 @@
 		E857A3A2283FF91800F08669 /* TestForPryaniky */ = {
 			isa = PBXGroup;
 			children = (
-				E8D207D62841109B002A478F /* Helpers */,
 				E857A3BE284008AB00F08669 /* MainViewController */,
 				E857A3BA2840055C00F08669 /* Services */,
 				E857A3B7284004F200F08669 /* Models */,
@@ -109,6 +110,7 @@
 		E857A3BE284008AB00F08669 /* MainViewController */ = {
 			isa = PBXGroup;
 			children = (
+				E8D207D928411D4E002A478F /* Helpers */,
 				E8D207CB2840F679002A478F /* MainCell */,
 				E857A3BF284008CA00F08669 /* MainViewController.swift */,
 				E8D207C92840F037002A478F /* MainViewModel.swift */,
@@ -142,9 +144,10 @@
 			path = Resources;
 			sourceTree = "<group>";
 		};
-		E8D207D62841109B002A478F /* Helpers */ = {
+		E8D207D928411D4E002A478F /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
+				E8D207DA28411D6A002A478F /* BoxForSegmentedControl.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -222,6 +225,7 @@
 			files = (
 				E857A3B92840052000F08669 /* Sample.swift in Sources */,
 				E857A3BC2840057900F08669 /* NetworkManager.swift in Sources */,
+				E8D207DB28411D6A002A478F /* BoxForSegmentedControl.swift in Sources */,
 				E857A3C0284008CA00F08669 /* MainViewController.swift in Sources */,
 				E8D207D32840FFE7002A478F /* ImageManager.swift in Sources */,
 				E857A3A4283FF91800F08669 /* AppDelegate.swift in Sources */,
