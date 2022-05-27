@@ -31,14 +31,7 @@ class MainViewModel: MainViewModelProtocol {
     
     func cellViewModel(at indexPath: IndexPath) -> TableCellViewModelProtocol {
         let view = sample?.view[indexPath.row] ?? ""
-        
         return TableCellViewModel(view: view, data: sample?.data)
     }
 }
 
-extension MainViewModel {
-    
-    
-    
-    
-}

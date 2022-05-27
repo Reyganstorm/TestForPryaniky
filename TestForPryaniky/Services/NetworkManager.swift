@@ -37,19 +37,19 @@ class NetworkManager {
         }.resume()
     }
     
-    func fetchImage(from url: String?,
-                    with completion: @escaping(Data) -> Void) {
-        guard let url = URL(string: url ?? "" ) else { return }
-        
-        URLSession.shared.dataTask(with: url) { data, _, error in
-            guard let data = data else {
-                print(error?.localizedDescription ?? "no description of error")
-                return
-            }
-            
-            DispatchQueue.main.async {
-                completion(data)
-            }
-        } .resume()
-    }
+//    func fetchImage(from url: String?,
+//                    with completion: @escaping(Data) -> Void) {
+//        guard let url = URL(string: url ?? "" ) else { return }
+//        
+//        URLSession.shared.dataTask(with: url) { data, _, error in
+//            guard let data = data else {
+//                print(error?.localizedDescription ?? "no description of error")
+//                return
+//            }
+//            
+//            DispatchQueue.main.async {
+//                completion(data)
+//            }
+//        } .resume()
+//    }
 }

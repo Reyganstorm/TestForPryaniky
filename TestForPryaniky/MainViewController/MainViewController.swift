@@ -9,8 +9,6 @@ import UIKit
 
 class MainViewController: UITableViewController {
 
-    private var sample: Sample?
-    
     private var viewModel: MainViewModelProtocol! {
         didSet {
             viewModel.fetchData {
